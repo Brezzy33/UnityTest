@@ -1,22 +1,16 @@
 using Cinemachine;
 using StarterAssets;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ThirdPersonShooterControler : MonoBehaviour
 {
-    [SerializeField]
-    private CinemachineVirtualCamera _aimVirtualCamera;
-
-    [SerializeField] 
-    private float _normalSensitivity;
-    [SerializeField] 
-    private float _aimSensitivity;
-
-    [SerializeField]
-    private LayerMask _aimColliderLayerMask = new LayerMask();
-
+    [SerializeField] private CinemachineVirtualCamera _aimVirtualCamera;
+    [SerializeField] private float _normalSensitivity;
+    [SerializeField] private float _aimSensitivity;
+    [SerializeField] private LayerMask _aimColliderLayerMask = new LayerMask();
     [SerializeField] private Transform _debugTransform;
+    [SerializeField] private Transform _bulletProjectile;
+    [SerializeField] private Transform _spawnBulletPosition;
 
     private ThirdPersonController _thirdPersonController;
     private StarterAssetsInputs _starterAssetsInputs;
@@ -56,6 +50,13 @@ public class ThirdPersonShooterControler : MonoBehaviour
             _aimVirtualCamera.gameObject.SetActive(false);
             _thirdPersonController.SetSensitivity(_normalSensitivity);
             _thirdPersonController.SetRotateOnMove(true);
+        }
+
+        if(_starterAssetsInputs.shoot)
+        {
+            Vector3 aimDirection = (mouseWorldPosition - _spawnBulletPosition.position).normalized;
+            Instantiate(_bulletProjectile, _spawnBulletPosition.position, Quaternion.LookRotation(aimDirection, Vector3.up));
+            _starterAssetsInputs.shoot = false;
         }
     }
 }
