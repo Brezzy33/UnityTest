@@ -35625,15 +35625,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.23333333
-    functionName: CreateLeftFootPrint
+  - time: 0.16666667
+    functionName: CreateRightFootPrint
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.43333334
-    functionName: CreateRightFootPrint
+  - time: 0.76666665
+    functionName: CreateLeftFootPrint
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

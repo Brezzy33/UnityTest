@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class FootPrints : MonoBehaviour
@@ -15,7 +14,7 @@ public class FootPrints : MonoBehaviour
     {
         if (Physics.Raycast(_leftFootLocation.position, _leftFootLocation.forward, out RaycastHit hit))
         {
-            Instantiate(_leftFootPrint, hit.point + hit.normal * _footPrintOffset, Quaternion.AngleAxis(_leftFootLocation.rotation.y, Vector3.up));
+            Instantiate(_leftFootPrint, hit.point + hit.normal * _footPrintOffset,  Quaternion.AngleAxis(_leftFootLocation.transform.eulerAngles.y, Vector3.up));
         }
     }
 
@@ -23,7 +22,7 @@ public class FootPrints : MonoBehaviour
     {
         if (Physics.Raycast(_rightFootLocation.position, _rightFootLocation.forward, out RaycastHit hit))
         {
-            Instantiate(_rightFootPrint, hit.point + hit.normal * _footPrintOffset, Quaternion.AngleAxis(_rightFootLocation.rotation.y, Vector3.up) /*Quaternion.LookRotation(hit.normal, _rightFootLocation.up)*/);
+            Instantiate(_rightFootPrint, hit.point + hit.normal * _footPrintOffset, Quaternion.AngleAxis(_rightFootLocation.transform.eulerAngles.y, Vector3.up) /*Quaternion.LookRotation(hit.normal, _rightFootLocation.up)*/);
         }
     }
 }
