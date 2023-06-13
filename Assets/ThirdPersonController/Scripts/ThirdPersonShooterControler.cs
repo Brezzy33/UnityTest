@@ -1,9 +1,11 @@
 using Cinemachine;
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class ThirdPersonShooterControler : MonoBehaviour
 {
+    [SerializeField] private Rig _aimRig;
     [SerializeField] private CinemachineVirtualCamera _aimVirtualCamera;
     [SerializeField] private float _normalSensitivity;
     [SerializeField] private float _aimSensitivity;
@@ -49,6 +51,9 @@ public class ThirdPersonShooterControler : MonoBehaviour
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+
+            //Aiming rig
+            //_aimRig.weight = Mathf.Lerp(_aimRig.weight, 1f, Time.deltaTime * 20f);
         }
         else
         {
@@ -58,6 +63,9 @@ public class ThirdPersonShooterControler : MonoBehaviour
             _thirdPersonController.SetRotateOnMove(true);
             //Switch to regular animation layer
             _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
+
+            //Aiming rig
+            //_aimRig.weight = Mathf.Lerp(_aimRig.weight, 0f, Time.deltaTime * 20f);
         }
 
         if(_starterAssetsInputs.shoot)
