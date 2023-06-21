@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8009390707169746682}
   - component: {fileID: 294593671225265124}
   - component: {fileID: 1053332013054734632}
-  - component: {fileID: 3221973888885452286}
+  - component: {fileID: 5180430002543320872}
   m_Layer: 5
   m_Name: LeftImage
   m_TagString: Untagged
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -92,19 +92,19 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3221973888885452286}
-          m_TargetAssemblyTypeName: ShowZoomScene, Assembly-CSharp
-          m_MethodName: OnImageClick
-          m_Mode: 2
+        - m_Target: {fileID: 5180430002543320872}
+          m_TargetAssemblyTypeName: ChangeSceneImage, Assembly-CSharp
+          m_MethodName: ChangeSceneWithImage
+          m_Mode: 5
           m_Arguments:
-            m_ObjectArgument: {fileID: 6689236141909999778}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: ViewImageMenu
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &3221973888885452286
+--- !u!114 &5180430002543320872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6689236141909999778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e13f83b26dd67e44faf1df5c682f2464, type: 3}
+  m_Script: {fileID: 11500000, guid: a2c1955eab8f2674485055277fd77ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6832949035876654405
@@ -148,7 +148,7 @@ RectTransform:
   - {fileID: 4363866590540224799}
   - {fileID: 2357117577821952297}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6737055415105446081}
   - component: {fileID: 4806423712323877105}
   - component: {fileID: 7163004970632452277}
-  - component: {fileID: 7972897101611862098}
+  - component: {fileID: 7377237420050492463}
   m_Layer: 5
   m_Name: RightImage
   m_TagString: Untagged
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -267,19 +267,19 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7972897101611862098}
-          m_TargetAssemblyTypeName: ShowZoomScene, Assembly-CSharp
-          m_MethodName: OnImageClick
-          m_Mode: 2
+        - m_Target: {fileID: 7377237420050492463}
+          m_TargetAssemblyTypeName: ChangeSceneImage, Assembly-CSharp
+          m_MethodName: ChangeSceneWithImage
+          m_Mode: 5
           m_Arguments:
-            m_ObjectArgument: {fileID: 7048069553562966231}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: ViewImageMenu
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &7972897101611862098
+--- !u!114 &7377237420050492463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,6 +288,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7048069553562966231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e13f83b26dd67e44faf1df5c682f2464, type: 3}
+  m_Script: {fileID: 11500000, guid: a2c1955eab8f2674485055277fd77ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

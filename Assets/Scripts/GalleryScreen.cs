@@ -21,11 +21,7 @@ public class GalleryScreen : MonoBehaviour
     {
         if (!_crRunning && value <= 0.2 && _imageIndex < PicturesCount)
         {
-            int nextImagesCount = _imageIndex;
-            if(_imageIndex + 1 == PicturesCount)
-                nextImagesCount ++;
-            else
-                nextImagesCount += 2;
+            int nextImagesCount = _imageIndex + 1;
 
             StartCoroutine(LoadImages(nextImagesCount));
         }
@@ -41,9 +37,10 @@ public class GalleryScreen : MonoBehaviour
     {
         GameObject instance = Instantiate(Prefab.gameObject);
 
-        TestItemView view = new TestItemView(instance.transform);
-        view.LeftImage.texture = _textures[i-2];
-        view.RightImage.texture = _textures[i-1];
+        TestItemView view = new TestItemView(instance.transform)
+        {
+            Image = { texture = _textures[i-1], name = (i-1).ToString()}
+        };
 
         instance.transform.SetParent(Content, false);
     }
@@ -61,10 +58,7 @@ public class GalleryScreen : MonoBehaviour
                 Debug.Log(url);
                 yield return LoadTextureAsync(url, AddLoadedTextureToCollection);
 
-                if (_imageIndex % 2 == 0)
-                {
-                    OnReceivedModels(_imageIndex);
-                }
+                OnReceivedModels(_imageIndex);
             }
         }
         finally
@@ -93,13 +87,11 @@ public class GalleryScreen : MonoBehaviour
 
     public class TestItemView
     {
-        public RawImage LeftImage;
-        public RawImage RightImage;
+        public RawImage Image;
 
         public TestItemView(Transform rootView)
         {
-            LeftImage = rootView.Find("LeftImage").GetComponent<RawImage>();
-            RightImage = rootView.Find("RightImage").GetComponent<RawImage>();
+            Image = rootView.GetComponent<RawImage>();
         }
     }
 }

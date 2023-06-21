@@ -51,4 +51,11 @@ public class LevelManager : MonoBehaviour
         asyncOperation.allowSceneActivation = true;
         _loaderCanvas.SetActive(false);
     }
+
+    public void LoadSceneWithImage(string sceneName)
+    {
+        Scene sceneToLoad = SceneManager.GetSceneByName(sceneName);
+        SceneManager.MoveGameObjectToScene(gameObject, sceneToLoad);
+        LoadScene(sceneName);
+    }
 }
