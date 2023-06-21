@@ -12,8 +12,13 @@ public class GalleryScreen : MonoBehaviour
     void Start()
     {
         Application.runInBackground = true;
-        StartCoroutine(LoadImages(4));
+        StartCoroutine(LoadImages(6));
         ScrollBar.onValueChanged.AddListener(ScrollbarCallBack);
+    }
+
+    void OnDisable()
+    {
+        ScrollBar.onValueChanged.RemoveAllListeners();
     }
 
     private bool _crRunning;
