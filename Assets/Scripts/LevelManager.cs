@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,17 +11,20 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _loaderCanvas;
     [SerializeField] private Slider _progressBar;
 
+    private TextMeshProUGUI _textBoxProgress;
+
     private void Awake()
     {
         if(Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            _textBoxProgress = _progressBar.transform.Find("ProgressText").gameObject.GetComponent<TextMeshProUGUI>();
         }
         else
         {
             Destroy(gameObject);
-        }         
+        }
     }
 
     public async void LoadScene(string sceneName)
@@ -38,16 +42,23 @@ public class LevelManager : MonoBehaviour
             await Task.Delay(10);
             progress = Mathf.MoveTowards(progress, asyncOperation.progress, Time.deltaTime);
             _progressBar.value = progress;
+            
             if (progress >= 0.9f)
             {
                 _progressBar.value = 1;
                 asyncOperation.allowSceneActivation = true;
             }
+            SetProgress();
         } 
 
         //await Task.Delay(1000); //Just for test
 
         asyncOperation.allowSceneActivation = true;
         _loaderCanvas.SetActive(false);
+    }
+
+    private void SetProgress()
+    {
+        _textBoxProgress.SetText((_progressBar.value * 100).ToString("F0"));
     }
 }
